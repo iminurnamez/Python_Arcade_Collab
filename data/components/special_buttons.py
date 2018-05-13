@@ -32,6 +32,37 @@ class NeonButton(Button):
         settings.update(kwargs)
         super(NeonButton, self).__init__(rect, *groups, **settings)
 
+        
+class SmallNeonButton(Button):
+    """
+    Neon sign style button that glows on mouseover.
+    """
+    width = 91
+    height = 29
+    
+    def __init__(self, pos, text, font_size=16,
+                 call=None, args=None, *groups, **kwargs):
+        text = text.replace("_", " ")
+        
+        blank = constants.GFX["neon_button_blank"]
+        scaled = pg.transform.scale(blank,
+                    (blank.get_width()//2, blank.get_height()//2))
+        on_label = Label(constants.FONTS["Fixedsys500c"], font_size, text,
+                         constants.HIGH_LIGHT_GREEN, {"center": (45, 14)})
+        off_label = Label(constants.FONTS["Fixedsys500c"], font_size, text,
+                          constants.LOW_LIGHT_GREEN, {"center": (45, 14)})
+        on_image = scaled.subsurface((self.width, 0, self.width, self.height))
+        off_image = scaled.subsurface((0, 0, self.width, self.height))
+        on_label.draw(on_image)
+        off_label.draw(off_image)
+        rect = on_image.get_rect(topleft=pos)
+        settings = {"hover_image" : on_image,
+                    "idle_image"  : off_image,
+                    "call"        : call,
+                    "args"        : args}
+        settings.update(kwargs)
+        super(SmallNeonButton, self).__init__(rect, *groups, **settings)
+
 
 class GameButton(Button):
     ss_size = (160, 120)

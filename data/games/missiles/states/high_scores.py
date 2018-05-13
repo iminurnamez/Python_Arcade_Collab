@@ -8,7 +8,6 @@ from data.core.tools import scaled_mouse_pos
 from data.core import constants as prog_constants
 from data.components.labels import Label, FlashingText, ButtonGroup, Textbox2
 from data.components.special_buttons import NeonButton
-
 from .. import constants
 
 

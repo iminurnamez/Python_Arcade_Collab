@@ -4,9 +4,8 @@ from data.components.state_machine import _State
 from data.core.tools import scaled_mouse_pos
 from data.core import constants as prog_constants
 from data.components.labels import Label, ButtonGroup
-from data.components.special_buttons import NeonButton
+from data.components.special_buttons import NeonButton, SmallNeonButton
 from .. import constants
-from ..tools import SmallNeonButton
 from ..ui import CityIcon
 from ..level import Level
 
